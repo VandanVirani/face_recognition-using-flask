@@ -6,9 +6,6 @@ import cv2
 import pickle
 import face_recognition
 
-# face_ca = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
-# recognizer = cv2.face.LBPHFaceRecognizer_create()
-
 
 tolerance  = 0.6
 frame_thickness = 3
@@ -25,7 +22,6 @@ x_train=[]
 y_label=[]
 
 for root,dirs,files in os.walk(image_dir):
-    # print(root,dirs,files)
       for file in files:
         if (file.endswith("jpg")) or (file.endswith("jpeg")):
             path= os.path.join(root,file)
@@ -48,31 +44,3 @@ for root,dirs,files in os.walk(image_dir):
 
             encodings_image = face_recognition.face_encodings(img,num_jitters=20)[0]  # higher num_jitter more the accurate
             np.save("{}\enc_{}.npy".format(eco_path,os.path.basename(file).replace(".jpg","").replace(".jpeg","").lower()),encodings_image)
-
-            # with open("{}\enc{}.pickle".format(eco_path,os.path.basename(file).replace(".jpg","").lower()),'wb') as f:
-            #     pickle.dump(encodings_image,f)
-            
-
-            # if not label in label_id:
-            #     label_id['{}'.format(label)] = current_id
-            #     current_id+=1
-            # id = label_id['{}'.format(label)]  
-            
-            
-
-            # faces = face_ca.detectMultiScale(gray_image,scaleFactor=1.4,minNeighbors=5)
-            # for (a,b,c,d) in faces:
-            #     print(path,a,b,c,d)
-            #     abc = image_gray[b:b+d,a:a+c]
-            #     x_train.append(abc)
-            #     y_label.append(id)
-
-
-
-
-# with open("labels.pickle",'wb') as f : #wb as writing bytes , f as files
-#     pickle.dump(label_id,f)
-
-# print(len(x_train) ,y_label)
-# recognizer.train(x_train,np.array(y_label))    
-# recognizer.save("trainer.yml")
