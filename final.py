@@ -4,23 +4,16 @@ from flask import Flask ,render_template,Response
 import cv2,numpy as np 
 import face_recognition
 import os
-# we will use deep learning model for image recognition 
 
-address = "http://192.168.161.97:8080/video"
-# if_face = cv2.CascadeClassifier("C:\\Users\\Ravi\\Desktop\\test_1\\haarcascade_frontalface_alt2.xml")
-# labels = {}
-# with open("C:\\Users\\Ravi\\Desktop\\test\\encodings\\ritik\\encr1.pickle",'rb') as f : #wb as writing bytes , f as files
-#     encodings = pickle.load(f)
+
+address = "http://192.168.161.97:8080/video" , # if you want to use other camera
 
 os.chdir("C:\\Users\\Ravi\\Desktop\\test_1")
 
 
 app = Flask(__name__)
-camera =  cv2.VideoCapture(address)
+camera =  cv2.VideoCapture(0)  # 0 for laptop or pc camera , or  place address for other wireless camera in local network
 
-# path = "C:\\Users\\Ravi\\Desktop\\test_1\\encodings"
-
-# print(path)
 paths = os.path.dirname(os.path.abspath(__file__))
 path = os.path.join(paths,"encodings")
 
@@ -37,14 +30,6 @@ for root,dirs,files in os.walk(path):
         else:
             index = name.index(str(os.path.basename(os.path.dirname(paths)))  )
             encoding[index].append(np.load(paths))
-
-
-
-
-
-print("half completed")
-
-
 
 
 
@@ -94,9 +79,7 @@ def identify():
             succ_enco_v.append(a)
             r.append(d)
     id = np.zeros((len(name)))   
-    # print("fvfvf",test_location)
     if True in succ_enco_v:     
-        # print("vdvf",np.shape(test_enc))
         if len(test_location[0])==1:  
             for k in range(len(test_enc)):
                 id =np.add(id,  [sum(face_recognition.compare_faces(encoding[i],test_enc[k][0] , tolerance=0.6 )  )  for i in range(len(name)) ]   )
@@ -107,7 +90,6 @@ def identify():
             cv2.rectangle(frame,(test_location[0][0][1],test_location[0][0][2]),(test_location[0][0][3],test_location[0][0][0]),(255,0,255),2)
             
         elif len(test_location[0])>1:
-            # print(len(test_location))
             face_lloc = []
             face_ident =[]
             for o in range(len(test_location)):
@@ -146,17 +128,4 @@ def buttons():
 
 if  __name__ == "__main__" :
     app.run(debug=True,host='127.0.0.1',port=2000)
-
-
-
-# # face_ca = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml') # cascadeclassifier used to detect that their is face in image
-# # recognizer = cv2.face.LBPHFaceRecognizer_create()
-# # recognizer.read("trainer.yml")
-# # for i in range(14):
-# #     image = cv2.imread("C:\\Users\\Ravi\\Desktop\\test\\image\\ritik\\r{}.jpg".format(i+1))
-# #     image = cv2.cvtColor(image,cv2.COLOR_RGB2GRAY)
-# #     id,conf = recognizer.predict(image)
-# #     if conf>=45 and conf<=85:
-# #                 print(id,"    ",labels[id])
-
 
