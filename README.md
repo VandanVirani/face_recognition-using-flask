@@ -1,6 +1,9 @@
 # face_recognition-using-flask
 
-    
+### the result of this project is :
+<img src="https://user-images.githubusercontent.com/76767487/174471980-8f0b1d48-0643-4bac-b6b3-50953894e639.png" width=1000 height=500>
+
+
    #### In this project we are going to make a model which predict new faces by using stored face data. we are using flask module in order to interact with html webpage.
 
    #### It is the basic model for face recognition system, you can enhance with your flask skill.
@@ -226,7 +229,6 @@ if  __name__ == "__main__" :
 
 ```
 
-### Now the result is :
-<img src="https://user-images.githubusercontent.com/76767487/174471980-8f0b1d48-0643-4bac-b6b3-50953894e639.png" width=1000 height=500>
+
     
 
