@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>flask demo!</title>
+  </head>
+  <body>
+    <img id="image" src="{{  url_for('videos')  }}" width="50%"/>
+    <br>
+    <button id="but1" class="button" onclick="button()">Identify</button>
+    <button id="but2" class="button" onclick="reverse_btn()">Reload</button>
+    <p id="dd"></p>
+       
+  </body>
+  <script>
+       function button()
+       { document.getElementById("image").src="{{  url_for('buttons')  }}";
+         document.getElementById('dd').innerHTML = document.getElementById("image").src
+       }
+       function reverse_btn()
+       {location.reload();
+       }
+  </script>
+
+  <style>
+    .button{
+      position: relative;
+      border: 3px solid green;
+      top: 50%;
+      left: 50%;
+      border: none;
+      color : white;
+      background-color: darkgreen;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
+</html>
