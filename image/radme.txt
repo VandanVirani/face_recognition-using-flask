@@ -1,0 +1,13 @@
+put single person face in similar folder example
+
+ravi
+    ->ravi1.jpg
+    ->ravi2.jpg
+    ->ravi3.jpg
+    ->ravi4.jpg
+
+vandan
+    ->vandan1.jpg
+    ->vandan2.jpg
+    ->vandan3.jpg
+    ->vandan4.jpg
